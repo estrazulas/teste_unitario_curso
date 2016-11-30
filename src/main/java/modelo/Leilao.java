@@ -11,6 +11,8 @@ public class Leilao {
 	
 	private Date data;
 
+	private boolean encerrado;
+	
 	public List<Lance> getLances() {
 		return lances;
 	}
@@ -33,5 +35,13 @@ public class Leilao {
 
 	public void setData(Date data) {
 		this.data = data;
+	}
+
+	public boolean isEncerrado() {
+		return encerrado;
+	}
+	
+	public void setEncerrado(boolean encerrado) {
+		this.encerrado = encerrado;
 	}
 }
