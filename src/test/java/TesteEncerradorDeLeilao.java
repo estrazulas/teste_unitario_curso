@@ -1,9 +1,4 @@
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.atLeastOnce;
-import static org.mockito.Mockito.inOrder;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -63,6 +58,18 @@ public class TesteEncerradorDeLeilao {
 		
 		Assert.assertEquals(1, encerrador.getCorrentes().size());
 		
+	}
+	
+	@Test
+	public void deveVerificarRepeticao(){
+		LeilaoDAO leilaoDAO = mock(LeilaoDAO.class);
+		for (int i = 5; i < 15; i++) {
+			leilaoDAO.enviarEmail(i, i+1);
+			leilaoDAO.enviarEmail(i+2, i);
+		}
+		verify(leilaoDAO,times(20)).enviarEmail(any(int.class), any(int.class));
+		//verify(leilaoDAO,atLeast(3)).enviarEmail(any(int.class),3);
+		//verify(leilaoDAO,atMost(2)).enviarEmail(1,any(int.class));
 	}
 	
 	@Test
